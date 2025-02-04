@@ -1,0 +1,112 @@
+// Variables de colores
+$primary-color: #0f2d23;
+$secondary-color: #ffffff;
+$border-color: #ccc;
+$button-hover: #145a45;
+$box-shadow: rgba(0, 0, 0, 0.15);
+$font-color: #333;
+$font-size-base: 1.1rem;
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $primary-color;
+
+  .login-card {
+    background: $secondary-color;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px $box-shadow;
+    width: 100%;
+    max-width: 380px; // 🔹 Reduce el ancho total para que los inputs no sean exageradamente largos
+    text-align: center;
+    position: relative;
+
+    .login-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5rem;
+
+      .logo {
+        width: 100%; // 🔹 Ajustamos el tamaño del logo para que encaje mejor
+        height: 300px;
+        display: block;
+      }
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: $primary-color;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: $font-color;
+      font-size: 1.1rem; // 🔹 Aumentamos el tamaño del subtítulo para mejor lectura
+      margin-bottom: 1.5rem;
+    }
+
+    form {
+      .form-group {
+        margin-bottom: 1.2rem;
+        text-align: left;
+
+        label {
+          font-size: 1.2rem; // 🔹 Letras más grandes y legibles
+          font-weight: bold;
+          color: $primary-color;
+          display: block;
+          margin-bottom: 0.3rem;
+        }
+
+        input {
+          width: 100%;
+          padding: 14px; // 🔹 Inputs más cómodos al escribir
+          border: 1px solid $border-color;
+          border-radius: 8px; // 🔹 Bordes más redondeados y modernos
+          font-size: 1.1rem;
+          transition: all 0.3s ease-in-out;
+
+          &:focus {
+            border-color: $primary-color;
+            outline: none;
+            box-shadow: 0 0 8px rgba(15, 45, 35, 0.3);
+          }
+        }
+      }
+
+      .error-message {
+        color: red;
+        font-size: 1rem; // 🔹 Aumentamos para que sea más visible
+        margin-bottom: 1rem;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2rem; // 🔹 Botón con texto más grande y mejor apariencia
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          background-color: $button-hover;
+          transform: scale(1.02);
+        }
+
+        &:disabled {
+          background-color: gray;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}
