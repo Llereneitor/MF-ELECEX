@@ -30,8 +30,15 @@ export class LoginComponent {
     this.errorMessage = '';
 
     this.authService.checkUser(this.loginForm.value).subscribe({
-      next: () => {
-
+      next: (isValid) => {
+        if (isValid) {
+          console.log("✅ Usuario válido, redirigiendo al Dashboard...");
+          this.router.navigate(['/dashboard']);
+        } else {
+          console.log("❌ Usuario no encontrado.");
+          this.errorMessage = 'Usuario o contraseña incorrectos';
+        }
+        this.loading = false;
       },
       error: err => {
         this.errorMessage = 'Usuario o contraseña incorrectos';
