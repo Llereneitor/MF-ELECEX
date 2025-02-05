@@ -1,63 +1,66 @@
 <div class="dashboard-container">
-    <!-- 🔹 Menú Lateral -->
-    <nav class="sidebar">
-      <h2>Menú</h2>
-      <ul>
-        <li><a routerLink="/dashboard">🏠 Inicio</a></li>
-        <li><a routerLink="/dashboard/facturas">📜 Facturas</a></li>
-        <li><a routerLink="/dashboard/clientes">👥 Clientes</a></li>
-        <li><a routerLink="/dashboard/proveedores">🏢 Proveedores</a></li>
-        <li><a routerLink="/reportes">📊 Reportes</a></li>
-        <li><a routerLink="/configuracion">⚙️ Configuración</a></li>
-      </ul>
-    </nav>
-  
-    <main class="content">
+  <!-- 🔹 Menú Lateral -->
+  <nav class="sidebar">
+    <h2>Menú</h2>
+    <ul>
+      <li><a routerLink="/dashboard">🏠 Inicio</a></li>
+      <li><a routerLink="/dashboard/facturas">📜 Facturas</a></li>
+      <li><a routerLink="/dashboard/clientes">👥 Clientes</a></li>
+      <li><a routerLink="/dashboard/proveedores">🏢 Proveedores</a></li>
+      <li><a routerLink="/reportes">📊 Reportes</a></li>
+      <li><a routerLink="/configuracion">⚙️ Configuración</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+    <!-- Aqui se cargaran las rutas /facturas... -->
+    <router-outlet></router-outlet> 
+
+    <!-- 🔹 Contenido Principal (Dashboard con gráficos) -->
+    <div *ngIf="showGraphs">
+      <h1>Panel de Control</h1>
     
-      <!-- Aqui se cargaran el resto de rutas /facturas... -->
-      <router-outlet></router-outlet> 
-
-      <!-- 🔹 Contenido Principal /dashboard grafico.-->
-      <div *ngIf="showGraphs">
-        <main class="content">
-          <h1>Panel de Control</h1>
+      <div class="charts-container">
+        <div class="chart">
+          <h2>Facturas por Pagar</h2>
+          <ngx-charts-bar-vertical
+            [view]="[650, 450]"
+            [results]="facturasPorPagar"
+            [scheme]="colorScheme"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxisLabel]="'Proveedor'"
+            [yAxisLabel]="'Monto ($)'"
+            [barPadding]="30"
+            [roundEdges]="false"
+            [animations]="true"
+            [xAxisTickFormatting]="formatXAxis">
+          </ngx-charts-bar-vertical>
+        </div>
       
-          <div class="charts-container">
-            <div class="chart">
-              <h2>Facturas por Pagar</h2>
-              <ngx-charts-bar-vertical
-                [view]="[400, 300]"
-                [results]="facturasPorPagar"
-                [scheme]="colorScheme"
-                [xAxis]="true"
-                [yAxis]="true"
-                [legend]="true"
-                [showXAxisLabel]="true"
-                [showYAxisLabel]="true"
-                [xAxisLabel]="'Proveedor'"
-                [yAxisLabel]="'Monto ($)'" >
-              </ngx-charts-bar-vertical>
-            </div>
-      
-            <div class="chart">
-              <h2>Facturas por Cobrar</h2>
-              <ngx-charts-bar-vertical
-                [view]="[400, 300]"
-                [results]="facturasPorCobrar"
-                [scheme]="colorScheme"
-                [xAxis]="true"
-                [yAxis]="true"
-                [legend]="true"
-                [showXAxisLabel]="true"
-                [showYAxisLabel]="true"
-                [xAxisLabel]="'Cliente'"
-                [yAxisLabel]="'Monto ($)'" >
-              </ngx-charts-bar-vertical>
-            </div>
-          </div>
-        </main>
+        <div class="chart">
+          <h2>Facturas por Cobrar</h2>
+          <ngx-charts-bar-vertical
+            [view]="[650, 450]"
+            [results]="facturasPorCobrar"
+            [scheme]="colorScheme"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [xAxisLabel]="'Cliente'"
+            [yAxisLabel]="'Monto ($)'"
+            [barPadding]="30"
+            [roundEdges]="false"
+            [animations]="true"
+            [xAxisTickFormatting]="formatXAxis">
+          </ngx-charts-bar-vertical>
+        </div>
       </div>
-    </main>
-
-  </div>
-  
+    </div>
+  </main>
+</div>

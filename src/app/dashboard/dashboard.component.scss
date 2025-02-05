@@ -50,6 +50,7 @@
   }
 }
 
+/* 🔹 Contenido Principal */
 .content {
   margin-left: 240px;
   padding: 2rem;
@@ -63,16 +64,57 @@
 
   .charts-container {
     display: flex;
-    gap: 2rem;
+    justify-content: space-between; // 🔹 Mantiene los gráficos alineados correctamente
+    align-items: flex-start;
     flex-wrap: wrap;
-    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    width: 100%; // 🔹 Ocupará todo el ancho
+  }
 
-    .chart {
-      width: 45%;
-      background: white;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  .chart {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex-grow: 1;  // 🔹 Permite que se expandan dinámicamente
+    min-width: 500px;
+    max-width: calc(100% - 260px); // 🔹 Se ajusta para no sobrepasar la pantalla
+
+    h2 {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2d3748;
+      margin-bottom: 15px;
     }
   }
+}
+
+/* 🔹 Ajustamos el tamaño de los textos en las etiquetas del gráfico */
+::ng-deep .ngx-charts text {
+  font-size: 18px !important;
+  font-weight: bold !important;
+  font-family: 'Arial', sans-serif !important;
+}
+
+/* 🔹 Evitamos que los nombres se corten en el eje X */
+::ng-deep .ngx-charts .x-axis text {
+  font-size: 16px !important;
+  transform: rotate(-10deg);  // 🔹 Inclinamos un poco para evitar cortes
+  text-anchor: middle;
+  white-space: nowrap !important;  // 🔹 Evita que los nombres se corten
+}
+
+/* 🔹 Ajustamos el tamaño de los valores en el eje Y */
+::ng-deep .ngx-charts .y-axis text {
+  font-size: 16px !important;
+}
+
+/* 🔹 Mejoramos la leyenda */
+::ng-deep .ngx-charts-legend text {
+  font-size: 16px !important;
+  font-weight: bold;
+  white-space: normal !important;  // 🔹 Evita que los nombres largos se corten
+  word-wrap: break-word !important;
 }
