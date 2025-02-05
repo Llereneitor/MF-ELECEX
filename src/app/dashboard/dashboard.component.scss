@@ -64,12 +64,12 @@
 
   .charts-container {
     display: flex;
-    justify-content: space-between; // 🔹 Mantiene los gráficos alineados correctamente
+    justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
     gap: 30px;
     padding: 20px;
-    width: 100%; // 🔹 Ocupará todo el ancho
+    width: 100%; 
   }
 
   .chart {
